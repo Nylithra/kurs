@@ -1,20 +1,21 @@
 void main() {
-  //1
-  int a = 0;
-  do {
-    print(a);
-    a++;
-  } while (a < 10);
-  //2
-  List<String> sehirler = ["Artvin", "Tırabzon", "Erzurum", "Çanakkale"];
-  for (String sehir in sehirler) {
-    print(sehir);
+  print(indirimlifiyat(fiyat: 9875, indirim: 15));
+}
+
+void karsila(String ad, [String soyad = ""]) {
+  if (soyad == "") {
+    print("Hoşgeldiniz" + ad);
+  } else {
+    print("Hoşgeldiniz" + ad + soyad);
   }
-  //3
-  int toplam = 0;
-  List<int> sayiler = [5, 6, 245, 846, 47];
-  for (int sayi in sayiler) {
-    toplam+=sayi;
-  }
-  print(toplam);
+}
+
+//İsimlendirilmiş
+
+void alanhesapla({double en = 1, double boy = 1}) {
+  print("Alan: " + (en * boy).toString()); 
+}
+
+double indirimlifiyat({double fiyat = 0, double indirim = 0}) {
+  return fiyat - (fiyat * indirim / 100);
 }
