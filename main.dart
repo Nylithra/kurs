@@ -1,21 +1,50 @@
+import 'package:flutter/material.dart';
+import 'dart:math';
+
 void main() {
-  print(indirimlifiyat(fiyat: 9875, indirim: 15));
+  runApp(MyWidget());
 }
 
-void karsila(String ad, [String soyad = ""]) {
-  if (soyad == "") {
-    print("Hoşgeldiniz" + ad);
-  } else {
-    print("Hoşgeldiniz" + ad + soyad);
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  int skor = 0;
+  double yukseklik = 100;
+  double genislik = 100;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(title: Text("Skor: $skor")),
+        body: Stack(
+          children: [
+            Positioned(
+              height: yukseklik,
+              width: genislik,
+              child: ElevatedButton(
+                onPressed: () {
+                  butonyer();
+                },
+                child: Text("YAKALA!"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
-}
 
-//İsimlendirilmiş
-
-void alanhesapla({double en = 1, double boy = 1}) {
-  print("Alan: " + (en * boy).toString()); 
-}
-
-double indirimlifiyat({double fiyat = 0, double indirim = 0}) {
-  return fiyat - (fiyat * indirim / 100);
+  void butonyer() {
+    setState(() {
+      yukseklik = Random().nextInt(500).toDouble();
+      genislik = Random().nextInt(500).toDouble();
+      skor++;
+    });
+  }
 }
